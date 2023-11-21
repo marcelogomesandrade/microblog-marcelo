@@ -42,4 +42,8 @@ function lerUmUsuario($conexao, $id)
 
     // Executamos e guardando o resultado da consulta 
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    //Retornando o resultado transformando em UM array com os dados 
+
+    return  mysqli_fetch_assoc($resultado);
 }

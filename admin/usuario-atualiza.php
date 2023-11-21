@@ -1,7 +1,14 @@
-<?php 
+
+<?php //usuario atualiza. php 
+require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
+
+$id = $_GET ['id'];
+
+$dados = lerUmUsuario($conexao, $id);
 ?>
 
+<pre><?=var_dump($dados)?></pre>
 
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
