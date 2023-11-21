@@ -17,3 +17,8 @@ function inserirUsuario($conexao, $nome, $email, $tipo, $senha)
 
     mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 }
+
+function lerUsuarios($conexao){
+    $sql = "SELECT id, nome, email, tipo FROM usuarios ORDER BY nome";
+
+}
