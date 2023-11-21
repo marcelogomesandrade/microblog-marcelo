@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Nov-2023 às 21:35
+-- Tempo de geração: 21-Nov-2023 às 21:03
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -20,24 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `microblog_exemplo2`
 --
-CREATE DATABASE IF NOT EXISTS `microblog_exemplo2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `microblog_exemplo2`;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `noticias`
---
-
-CREATE TABLE `noticias` (
-  `id` int(11) NOT NULL,
-  `data` datetime NOT NULL DEFAULT current_timestamp(),
-  `titulo` varchar(150) NOT NULL,
-  `texto` text NOT NULL,
-  `resumo` text NOT NULL,
-  `imagem` varchar(45) NOT NULL,
-  `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -45,6 +27,7 @@ CREATE TABLE `noticias` (
 -- Estrutura da tabela `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
@@ -59,18 +42,15 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`) VALUES
 (1, 'Marcelo Gomes de Andrade ', 'gomesgomes123321@gmail.com', '1234', 'admin'),
-(4, 'maria sonha', 'dac@gmail.com', '$2y$10$p/yIVZz0nxU3hpooeMjfJu4VDywmKHyWNqtP/oODQv4H/PdKYlOfW', 'editor');
+(4, 'maria sonha', 'dac@gmail.com', '$2y$10$p/yIVZz0nxU3hpooeMjfJu4VDywmKHyWNqtP/oODQv4H/PdKYlOfW', 'editor'),
+(5, 'Helio Gomes de Andrade', 'sac.bearmais@gmail.com', '$2y$10$t61H4ClV6HjZpu00ZwDr7.OBO7WtcjcpS4RUoPi6RpZpBZ74KV9K2', 'editor'),
+(6, 'Geandro Lopes ', 'amigo@bearplus.net', '$2y$10$x.fVx4G.vL0hOE1a31jEHe5L.H/XrgcRupLDkqbm2HjP80CNTBtjW', 'editor'),
+(7, 'Rodrigo Natura ', 'bear@bearplus.net', '$2y$10$3Woql2omqPXapHuL7rV3J.i.IOqBAjuY41K2r1K2l2b.8gFXdDcDW', 'editor'),
+(8, 'João Carlos ', 'equipe@bearplus.net', '$2y$10$y0sd.cChYVZxFtozieub2eIrCGzEYJJOREAQiOS/Chxhh78/rYAQK', 'editor');
 
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `noticias`
---
-ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_noticias_usuarios` (`usuario_id`);
 
 --
 -- Índices para tabela `usuarios`
@@ -84,26 +64,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `noticias`
---
-ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `noticias`
---
-ALTER TABLE `noticias`
-  ADD CONSTRAINT `fk_noticias_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

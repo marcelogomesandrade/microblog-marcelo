@@ -47,3 +47,16 @@ function lerUmUsuario($conexao, $id)
 
     return  mysqli_fetch_assoc($resultado);
 }
+
+function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo)
+{
+    $sql = "UPDATE usuario SET 
+    nome = '$nome',
+    email = '$email',
+    senha = '$senha',
+    tipo = '$tipo'
+    WHERE id = $id";//NÃO ESQUEÇA DE FINALIZAR COM PONTO E VÍRGULA, POR FAVOR! 
+    
+
+    mysqli_query($conexao,$sql) or die (mysqli_errno($conexao));
+}
