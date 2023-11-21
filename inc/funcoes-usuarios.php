@@ -33,3 +33,13 @@ function lerUsuarios($conexao)
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }
+
+function lerUmUsuario($conexao, $id)
+{
+
+    // Montamos o sql contendo o id do usuário que queremos carregar 
+    $sql = "SELECT * FROM usuarios WHERE id = $id";
+
+    // Executamos e guardando o resultado da consulta 
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+}
