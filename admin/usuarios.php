@@ -2,11 +2,10 @@
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
-// Chamamos a função lerUsuarios que ao terminar de fazer os processos, ela retorna os dados do resultados da consunta/query. 
-
-$dados = lerUsuarios($conexao);
+// Chamamos a função lerUsuarios que ao terminar de fazer os processos, ela retorna os dados da dados dos usuários .
+$listaDeUsuarios = lerUsuarios($conexao);
 ?>
-<pre><?= var_dump($dados) ?></pre>
+
 
 
 <div class="row">
@@ -36,20 +35,24 @@ $dados = lerUsuarios($conexao);
 
 				<tbody>
 
-					<tr>
-						<td> Nome... </td>
-						<td> E-mail... </td>
-						<td> Tipo... </td>
-						<td class="text-center">
-							<a class="btn btn-warning" href="usuario-atualiza.php">
-								<i class="bi bi-pencil"></i> Atualizar
-							</a>
+					<?php foreach ($listaDeUsuarios as $usuario) { ?>
 
-							<a class="btn btn-danger excluir" href="usuario-exclui.php">
-								<i class="bi bi-trash"></i> Excluir
-							</a>
-						</td>
-					</tr>
+						<tr>
+							<td> <?=$usuario ['nome']?></td>
+							<td> <?=$usuario ['email']?></td>
+							<td> <?=$usuario ['tipo']?></td>
+							<td class="text-center">
+								<a class="btn btn-warning" href="usuario-atualiza.php?id=<?=$usuario['id']?>">
+									<i class="bi bi-pencil"></i> Atualizar
+								</a>
+
+								<a class="btn btn-danger excluir" href="usuario-exclui.php?id=<?=$usuario['id']?>">
+									<i class="bi bi-trash"></i> Excluir
+								</a>
+							</td>
+						</tr>
+
+					<?php } ?>
 
 				</tbody>
 			</table>
