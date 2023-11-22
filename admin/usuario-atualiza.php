@@ -32,7 +32,7 @@ if (isset($_POST['atualizar'])) {
 
 //Redirecionamos para a página de usuários 
 
-header("location:usuario.php"); 
+header("location:usuarios.php"); 
 
 }
 

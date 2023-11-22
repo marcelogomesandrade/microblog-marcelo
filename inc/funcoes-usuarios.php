@@ -50,7 +50,7 @@ function lerUmUsuario($conexao, $id)
 
 function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo)
 {
-    $sql = "UPDATE usuario SET 
+    $sql = "UPDATE usuarios SET 
     nome = '$nome',
     email = '$email',
     senha = '$senha',
@@ -58,5 +58,5 @@ function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo)
     WHERE id = $id";//NÃO ESQUEÇA DE FINALIZAR COM PONTO E VÍRGULA, POR FAVOR! 
     
 
-    mysqli_query($conexao,$sql) or die (mysqli_errno($conexao));
+    mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
 }
