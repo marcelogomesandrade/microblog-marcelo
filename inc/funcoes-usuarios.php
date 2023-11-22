@@ -55,15 +55,24 @@ function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo)
     email = '$email',
     senha = '$senha',
     tipo = '$tipo'
-    WHERE id = $id";//NÃO ESQUEÇA DE FINALIZAR COM PONTO E VÍRGULA, POR FAVOR! 
-    
+    WHERE id = $id"; //NÃO ESQUEÇA DE FINALIZAR COM PONTO E VÍRGULA, POR FAVOR! 
 
-    mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
-function excluirUsuario ($conexao,$id) {
+function excluirUsuario($conexao, $id)
+{
 
     $sql = "DELETE FROM usuarios WHERE id = $id";
 
-    mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+}
+
+function buscaUsuario($conexao, $email)
+{
+
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    return mysqli_fetch_assoc($resultado);
 }
