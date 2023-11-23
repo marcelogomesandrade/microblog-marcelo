@@ -43,3 +43,18 @@ function logout () {
     exit; //ou die()
     
 }
+
+// Esta verficiação será aplicada em TODAS AS PÁGINAS relacionadas ao gerenciameno de usuários da área administrativa 
+
+function verificaTipo(){
+
+// Se o tipo de usuário logado na sessão NÃO FOR admin 
+
+    if($_SESSION['tipo'] !='admin'){ //Então redirecione para:
+        header ("location:nao-autorizado.php");
+        exit;
+
+    }
+
+
+}

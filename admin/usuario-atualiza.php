@@ -2,6 +2,9 @@
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
+//Verficando se o usuário pode entrar nesta páginas 
+verificaTipo();
+
 $id = $_GET['id'];
 
 // Chamamos a função e guardando o retorno dela

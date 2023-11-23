@@ -6,6 +6,9 @@ require "../inc/funcoes-usuarios.php";
 
 /* Detectando se o formulário foi acionado */
 
+//Verficando se o usuário pode entrar nesta páginas 
+verificaTipo();
+
 if (isset($_POST['inserir'])) {
 
 	// Pegar os dados preenchidos 
