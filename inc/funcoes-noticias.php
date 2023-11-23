@@ -2,8 +2,9 @@
 require "conecta.php";
 
 /* Usada em noticia-insere.php */
-function inserirNoticia($conexao){
-    
+function inserirNoticia($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -11,14 +12,41 @@ function inserirNoticia($conexao){
 
 
 /* Usada em noticia-insere.php e noticia-atualiza.php */
-function upload(){
-    
+
+function upload($arquivo)
+
+//validação back-end / lista de formatos suportados pela site (precisa ser igual ao que está no html)
+{
+    $tiposValidos = ["image/png", "image/gif", "image/jpeg", "image/svg+xml"];
+
+    // Verificando se o tipo de arquivo NÃO É um dos suportados
+
+    if (!in_array($arquivo['type'], $tiposValidos)) {
+        echo "<script> 
+        alert('Formato inválido!'); history.back ();</script>";
+        exit;
+    }
+    //Obtendo apenas o nome /extensão do arquivo 
+    $nome = $arquivo['name'];
+
+    // Obtendo informações de acesso temporário 
+    $temporario = $arquivo['tmp_name'];
+
+    $destino = "../imagens/" . $nome;
+
+    // Definindo para onde a imagem vai e com qual nome 
+
+    move_uploaded_file($temporario, $destino);
+
+    // Movendo o arquivo da área temporária para a pasta final 
+
 } // fim upload
 
 
 /* Usada em noticias.php */
-function lerNoticias($conexao){
-    
+function lerNoticias($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -26,14 +54,15 @@ function lerNoticias($conexao){
 
 
 /* Usada em noticias.php e páginas da área pública */
-function formataData(){    
-    
+function formataData()
+{
 } // fim formataData
 
 
 /* Usada em noticia-atualiza.php */
-function lerUmaNoticia($conexao){
-    
+function lerUmaNoticia($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -41,8 +70,9 @@ function lerUmaNoticia($conexao){
 
 
 /* Usada em noticia-atualiza.php */
-function atualizarNoticia($conexao){
-    
+function atualizarNoticia($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -50,7 +80,8 @@ function atualizarNoticia($conexao){
 
 
 /* Usada em noticia-exclui.php */
-function excluirNoticia($conexao){
+function excluirNoticia($conexao)
+{
 
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -65,8 +96,9 @@ function excluirNoticia($conexao){
 /* Funções usadas nas páginas da área pública */
 
 /* Usada em index.php */
-function lerTodasAsNoticias($conexao){
-    
+function lerTodasAsNoticias($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -74,8 +106,9 @@ function lerTodasAsNoticias($conexao){
 
 
 /* Usada em noticia.php */
-function lerDetalhes($conexao){
-    
+function lerDetalhes($conexao)
+{
+
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
@@ -83,8 +116,9 @@ function lerDetalhes($conexao){
 
 
 /* Usada em resultados.php */
-function busca($conexao){
-    
+function busca($conexao)
+{
+
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 } // fim busca
