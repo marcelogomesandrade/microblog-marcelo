@@ -15,6 +15,10 @@ if (isset($_POST['inserir'])) {
 
 	// Enviando o arquivo para o servidor 
 	upload($imagem);
+
+	inserirNoticia($conexao, $titulo, $texto, $resumo, $imagem['name'], $usuarioId);
+
+	header("location:noticias.php");
 }
 ?>
 
