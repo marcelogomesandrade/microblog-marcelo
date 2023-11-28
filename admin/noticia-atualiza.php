@@ -4,18 +4,42 @@ require_once "../inc/cabecalho-admin.php";
 
 // Capturar o id da notícia que foi transmitido via URL
 
-$idnoticia = $_GET ['id'];
+$idnoticia = $_GET['id'];
 
 // Capturando o usuário logado (id) e o tipo dele (tipo)
 
-$idUsuario = $_SESSION ['id'];
-$tipoUsuario = $_SESSION ['tipo'];
+$idUsuario = $_SESSION['id'];
+$tipoUsuario = $_SESSION['tipo'];
 
 //Chamamos a função e passamos os parâmetros 
 
-$noticia = lerUmaNoticia($conexao, $idnoticia, $idUsuario,$tipoUsuario);
+$noticia = lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
 
+if (isset($_POST['atualizar'])) {
+    $titulo = $_POST['titulo'];
+    $texto = $_POST['texto'];
+    $resumo = $_POST['resumo'];
 
+    // Lógica /Algoritmo para a imagem 
+
+    // Se o campo imagem estiver vazia, então significa que o usuário NÃO QUER TROCAR A IMAGEM 
+
+    // ou seja , o sistema vai manter a imagem existente
+
+    if (empty($_FILES['imagem']['name'])) {
+        $imagem = $_POST['imagem-existente'];
+    } else {
+
+        // caso contrário, então pegamos a referência do arquivo (nome e extensão) e fazermos o processo de upload 
+
+        $imagem = $_FILES['image']['name'];
+        upload($_FILES['imagem']);
+    }
+
+    atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNoticia, $idUsuario, $tipoUsuario);
+
+    header("location:noticias.php");
+} // fim if isset 
 
 
 ?>
@@ -32,24 +56,24 @@ $noticia = lerUmaNoticia($conexao, $idnoticia, $idUsuario,$tipoUsuario);
 
             <div class="mb-3">
                 <label class="form-label" for="titulo">Título:</label>
-                <input value ="<?=$noticia['titulo'] ?>"class="form-control" required type="text" id="titulo" name="titulo">
+                <input value="<?= $noticia['titulo'] ?>" class="form-control" required type="text" id="titulo" name="titulo">
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="texto">Texto:</label>
-                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"><?=$noticia['texto']?></textarea>
+                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"><?= $noticia['texto'] ?></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="resumo">Resumo (máximo de 300 caracteres):</label>
                 <span id="maximo" class="badge bg-danger">0</span>
-                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"><?=$noticia['texto']?></textarea>
+                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"><?= $noticia['texto'] ?></textarea>
             </div>
 
             <div class="mb-3">
                 <label for="imagem-existente" class="form-label">Imagem da notícia:</label>
                 <!-- campo somente leitura, meramente informativo -->
-                <input value ="<?=$noticia ['imagem'] ?>" class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
+                <input value="<?= $noticia['imagem'] ?>" class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
             </div>
 
             <div class="mb-3">
