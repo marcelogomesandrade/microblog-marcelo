@@ -145,17 +145,15 @@ function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNotici
 function excluirNoticia($conexao, $idUsuario, $idNoticia, $tipoUsuario)
 {
 
-    if ($tipoUsuario == 'admin'){
+    if ($tipoUsuario == 'admin') {
         $sql = "DELETE FROM noticias WHERE id = $idNoticia";
-
     } else {
         $sql = "DELETE FROM noticias 
         WHERE id = $idNoticia AND usuario_id = $idUsuario";
     }
 
 
-     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 } // fim excluirNoticia
 
 
@@ -166,11 +164,16 @@ function excluirNoticia($conexao, $idUsuario, $idNoticia, $tipoUsuario)
 /* Funções usadas nas páginas da área pública */
 
 /* Usada em index.php */
+
 function lerTodasAsNoticias($conexao)
 {
+    $sql = "SELECT titulo, resumo, imagem, id 
+    FROM noticias ORDER BY data DESC";
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    ;
 
 } // fim lerTodasAsNoticias
 
