@@ -4,7 +4,7 @@ require_once "../inc/cabecalho-admin.php";
 
 // Capturar o id da notícia que foi transmitido via URL
 
-$idnoticia = $_GET['id'];
+$idNoticia = $_GET['id'];
 
 // Capturando o usuário logado (id) e o tipo dele (tipo)
 
@@ -32,7 +32,7 @@ if (isset($_POST['atualizar'])) {
 
         // caso contrário, então pegamos a referência do arquivo (nome e extensão) e fazermos o processo de upload 
 
-        $imagem = $_FILES['image']['name'];
+        $imagem = $_FILES['imagem']['name'];
         upload($_FILES['imagem']);
     }
 
