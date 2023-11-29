@@ -136,16 +136,25 @@ function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNotici
 
 
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
 } // fim atualizarNoticia
 
 
 /* Usada em noticia-exclui.php */
-function excluirNoticia($conexao)
+
+
+function excluirNoticia($conexao, $idUsuario, $idNoticia, $tipoUsuario)
 {
 
+    if ($tipoUsuario == 'admin'){
+        $sql = "DELETE FROM noticias WHERE id = $idNoticia";
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    } else {
+        $sql = "DELETE FROM noticias 
+        WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+
+
+     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 } // fim excluirNoticia
 

@@ -65,7 +65,7 @@ $listaDeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 									<i class="bi bi-pencil"></i> Atualizar
 								</a>
 
-								<a class="btn btn-danger excluir" href="noticia-exclui.php?id=<?= $noticia['id'] ?>">
+						<a class="btn btn-danger excluir" href="noticia-exclui.php?id=<?= $noticia['id'] ?>">
 									<i class="bi bi-trash"></i> Excluir
 								</a>
 							</td>
