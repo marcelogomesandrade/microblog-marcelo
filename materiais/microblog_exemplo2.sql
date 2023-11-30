@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Nov-2023 às 21:03
+-- Tempo de geração: 30-Nov-2023 às 21:23
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
@@ -41,12 +40,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`) VALUES
-(1, 'Marcelo Gomes de Andrade ', 'gomesgomes123321@gmail.com', '1234', 'admin'),
-(4, 'maria sonha', 'dac@gmail.com', '$2y$10$p/yIVZz0nxU3hpooeMjfJu4VDywmKHyWNqtP/oODQv4H/PdKYlOfW', 'editor'),
-(5, 'Helio Gomes de Andrade', 'sac.bearmais@gmail.com', '$2y$10$t61H4ClV6HjZpu00ZwDr7.OBO7WtcjcpS4RUoPi6RpZpBZ74KV9K2', 'editor'),
-(6, 'Geandro Lopes ', 'amigo@bearplus.net', '$2y$10$x.fVx4G.vL0hOE1a31jEHe5L.H/XrgcRupLDkqbm2HjP80CNTBtjW', 'editor'),
-(7, 'Rodrigo Natura ', 'bear@bearplus.net', '$2y$10$3Woql2omqPXapHuL7rV3J.i.IOqBAjuY41K2r1K2l2b.8gFXdDcDW', 'editor'),
-(8, 'João Carlos ', 'equipe@bearplus.net', '$2y$10$y0sd.cChYVZxFtozieub2eIrCGzEYJJOREAQiOS/Chxhh78/rYAQK', 'editor');
+(1, 'Marcelo Gomes de Andrade ', 'gomesgomes123321@gmail.com', '$2y$10$KPrxa7zRUpsqHTxL5PyAgevIvyd3.MWlu/kAnHLpHD7Dy7bAryNVu', 'admin'),
+(7, 'Rodrigo Natura ', 'sac.bearmais@gmail.com', '$2y$10$T7QqHoLFUnbXgeFbCX7vR.VtSDLBAlFjTSd/02/dHd0c..Bahs1Ue', 'editor'),
+(10, 'Anderson Homos', 'bear@gmail.com', '$2y$10$Jj1OQWOJzqswM.ZkLA1JXu9eNdcnEhlCpqI3.2z5O6I/5WVkEjZFq', 'editor');
 
 --
 -- Índices para tabelas despejadas
@@ -67,7 +63,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
