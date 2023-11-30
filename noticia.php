@@ -18,7 +18,7 @@ $DadosDaNoticias = lerDetalhes($conexao,$idNoticias);
     <article class="col-12">
         <h2> <?= $DadosDaNoticias['titulo'] ?> </h2>
         <p class="font-weight-light">
-            <time><?= $DadosDaNoticias['data'] ?></time> - <span><?= $DadosDaNoticias['autor'] ?> </span>
+            <time><?=formataData($DadosDaNoticias['data'])?></time> - <span><?= $DadosDaNoticias['autor'] ?> </span>
         </p>
         <img src="imagens/<?= $DadosDaNoticias['imagem'] ?>" alt="" class="float-start pe-2 img-fluid">
         <p class="ajusta-texto"><?= $DadosDaNoticias['texto'] ?></p>
