@@ -173,19 +173,33 @@ function lerTodasAsNoticias($conexao)
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
-    ;
-
 } // fim lerTodasAsNoticias
 
 
 /* Usada em noticia.php */
-function lerDetalhes($conexao)
+
+function lerDetalhes($conexao,$id)
 {
 
+    $sql = "SELECT 
+    
+    noticias.data,
+    noticias.titulo,
+    noticias.texto,
+    noticias.imagem,
+    usuarios.nome as autor
+    FROM noticias JOIN usuarios on noticias.usuario_id = usuarios.id 
+    WHERE noticias.id=$id
+    ";
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
-} // fim lerDetalhes
+    return mysqli_fetch_assoc($resultado);
+
+
+} 
+
+// fim lerDetalhes
 
 
 /* Usada em resultados.php */
