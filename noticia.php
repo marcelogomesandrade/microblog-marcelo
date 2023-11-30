@@ -21,7 +21,7 @@ $DadosDaNoticias = lerDetalhes($conexao,$idNoticias);
             <time><?= $DadosDaNoticias['data'] ?></time> - <span><?= $DadosDaNoticias['autor'] ?> </span>
         </p>
         <img src="imagens/<?= $DadosDaNoticias['imagem'] ?>" alt="" class="float-start pe-2 img-fluid">
-        <p><?= $DadosDaNoticias['texto'] ?></p>
+        <p class="ajusta-texto"><?= $DadosDaNoticias['texto'] ?></p>
     </article>
     
 

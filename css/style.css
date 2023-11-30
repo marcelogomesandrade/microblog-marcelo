@@ -15,3 +15,9 @@
     background-color: white;
     color: black;
 }
+
+.ajusta-texto {
+    /* Esta propriedade pegará os espaços em branca existentes no texto, e adicionará "quebra" em cada uma delas */
+
+    white-space: pre-wrap;
+}
