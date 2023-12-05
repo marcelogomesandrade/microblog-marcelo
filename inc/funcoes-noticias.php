@@ -79,10 +79,9 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario)
 
 /* Usada em noticias.php e páginas da área pública */
 function formataData($data)
-{  $dataFormatada = date("d/m/Y  H:i" , strtotime($data));
+{
+    $dataFormatada = date("d/m/Y  H:i", strtotime($data));
     return $dataFormatada;
-
-
 } // fim formataData
 
 
@@ -175,13 +174,12 @@ function lerTodasAsNoticias($conexao)
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
 } // fim lerTodasAsNoticias
 
 
 /* Usada em noticia.php */
 
-function lerDetalhes($conexao,$id)
+function lerDetalhes($conexao, $id)
 {
 
     $sql = "SELECT 
@@ -198,17 +196,24 @@ function lerDetalhes($conexao,$id)
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_assoc($resultado);
-
-
-} 
+}
 
 // fim lerDetalhes
 
 
 /* Usada em resultados.php */
-function busca($conexao)
+
+function busca($conexao, $termoDigitado)
+
 {
+    $sql = "SELECT * FROM noticias WHERE 
+    titulo  LIKE '%$termoDigitado%'  OR 
+    resumo  LIKE '%$termoDigitado%'  OR 
+    texto   LIKE '%$termoDigitado%'
+    ORDER BY data DESC ";
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao))
+        or die(mysqli_error($conexao));
 
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 } // fim busca
